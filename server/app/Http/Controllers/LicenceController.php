@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\LicenceRequest;
+use App\Services\LicenceService;
+
+class LicenceController extends Controller
+{
+    private LicenceService $licenceService;
+    public function __construct(
+        LicenceService $licenceService
+    )
+    {
+        $this->licenceService = $licenceService;
+    }
+
+    public function licence(LicenceRequest $request) {
+        $appKey = $request->validated('app_key');
+        $licenceKey = $request->validated('licence_key');
+        $licence = $this->licenceService->licenceCheck($appKey, $licenceKey);
+        return response()->json([
+            'success' => true,
+            'message' => $licence['message'],
+            'data' => $licence['data']
+        ], $licence['code']);
+    }
+}
