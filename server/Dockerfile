@@ -23,7 +23,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 
 # Настройка php-fpm
-RUN echo "listen = 9001" >> /usr/local/etc/php-fpm.d/zz-docker.conf
+RUN echo "listen = 9000" >> /usr/local/etc/php-fpm.d/zz-docker.conf
 
 EXPOSE 9000
 

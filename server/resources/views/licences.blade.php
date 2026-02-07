@@ -57,7 +57,7 @@
             <h4 class="mb-0">Создание новой лицензии</h4>
         </div>
         <div class="card-body">
-            <form action="{{ 'http://localhost:81/licences' }}" method="POST" id="licenceForm">
+            <form action="{{ route("licences.create") }}" method="POST" id="licenceForm">
                 @csrf
                 <!-- App Key -->
                 <div class="mb-3">
@@ -213,7 +213,7 @@
                                 <td>
                                     <div class="btn-group" role="group">
                                         @if($canRevoke)
-                                            <form action="{{ 'http://localhost:81/revoke/' . $licence->id }}" method="POST" class="d-inline">
+                                            <form action="{{ route("licences.revoke", ['id' => $licence->id])  }}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('POST')
                                                 <button type="submit"

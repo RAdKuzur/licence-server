@@ -23,7 +23,7 @@ class LicenceController extends Controller
     public function create(LicenceCreateRequest $request)
     {
         $this->licenceService->create($request->toDTO());
-        return redirect('http://localhost:81/licences');
+        return redirect()->route('licences.all');
     }
     public function licence(LicenceRequest $request) {
         $appKey = $request->validated('app_key');
@@ -37,6 +37,6 @@ class LicenceController extends Controller
     }
     public function revoke($id){
         $this->licenceService->revoke($id);
-        return redirect('http://localhost:81/licences');
+        return redirect()->route('licences.all');
     }
 }
