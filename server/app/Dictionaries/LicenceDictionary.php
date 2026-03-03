@@ -9,7 +9,7 @@ class LicenceDictionary implements BaseDictionary
 
     public static function type(){
         return [
-            self::ACTIVE => 'Лицензия отозвана',
+            self::ACTIVE => 'Лицензия активна',
             self::REVOKED => 'Лицензия отозвана'
         ];
     }
